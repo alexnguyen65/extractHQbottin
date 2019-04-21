@@ -1,0 +1,80 @@
+Hydro-Québec rend disponible le bottin téléphonique de ses employés
+via son site Internet:
+
+     http://rz.hydroquebec.com/RZWeb/afficheAccueil.do?init=0
+
+Cependant, on doit saisir au moins 2 caractères pour le nom et au moins
+2 caractères pour le prénom, afin d'y effectuer la recherche.
+
+Ce script, écrit en python v2.x, permet d'extraire tout le contenu du bottin
+téléphonique, en automatisant la saisie de toutes les permutations possibles
+(A à Z) des noms et prénoms.
+
+C-à-d: 
+   Nom: AA, Prénom: AA
+   ...
+   Nom: AA, Prénom: AZ
+   Nom: AA, Prénom: BA
+   ...
+   Nom: AA, Prénom: ZZ
+   Nom: AB, Prénom: AA
+   ...
+   Nom: ZZ, Prénom: ZZ
+
+Cela représente 456 976 combinaisons de 2 caractères de noms et prénoms:
+   26 x 26 x 26 x 26 = 456 976
+
+Afin de ne pas générer un déni de service (DoS) au système de bottin d'Hydro-Québec,
+on insère une pause d'une seconde entre chaque combinaison.
+
+La durée totale d'exécution de ce script serait de 5,289 jours:
+   456 976s / 60s/min / 60min/h / 24h/j = 5,289 j
+
+Ce script utilise principalement les modules "mechanize" et "BeautifulSoup" de python.
+Les tests ont été effectués avec succès dans une machine virtuelle Kali Linux 2019.1, 
+entre le 6 et 15 mars 2019.
+
+Veuillez prendre note que ce script ne fonctionnerait plus si jamais Hydro-Québec
+déciderait d'instaurer un CAPTCHA, à sa page de recherche téléphonique.
+
+Références:
+
+[01] THEAUTOMATIC.NET, ROBOBROWSER: AUTOMATING ONLINE FORMS, 
+     http://theautomatic.net/2017/09/19/robobrowser-automating-online-forms/,
+     site consulté le 1er mars 2019.
+[02] HACKERNOON.COM, Mastering Python Web Scraping: Get Your Data Back,
+     https://hackernoon.com/mastering-python-web-scraping-get-your-data-back-e9a5cc653d88,
+     site consulté le 1er mars 2019.
+[03] GITHUB.IO, How to scrape a website that requires login with Python,
+     http://kazuar.github.io/scraping-tutorial/,
+     site consulté le 1er mars 2019.
+[04] GITHUB.COM, Advanced web browsing, scraping and automation,
+     https://github.com/sebastien/wwwclient,
+     site consulté le 1er mars 2019.
+[05] DIGITALOCEAN.COM, How To Scrape Web Pages with Beautiful Soup and Python 3,
+     https://www.digitalocean.com/community/tutorials/how-to-scrape-web-pages-with-beautiful-soup-and-python-3,
+     site consulté le 1er mars 2019.
+[06] ZETCODE.COM, Python Requests tutorial,
+     http://zetcode.com/web/pythonrequests/,
+     site consulté le 1er mars 2019.
+[07] TOWARDSDATASCIENCE.COM, Controlling the Web with Python,
+     https://towardsdatascience.com/controlling-the-web-with-python-6fceb22c5f08,
+     site consulté le 1er mars 2019.
+[08] GEEKSFORGEEKS.COM, Implementing Web Scraping in Python with BeautifulSoup,
+     https://www.geeksforgeeks.org/implementing-web-scraping-python-beautiful-soup/,
+     site consulté le 1er mars 2019.
+[09] READTHEDOCS.COM, mechanize,
+     https://mechanize.readthedocs.io/en/latest/,
+     site consulté le 1er mars 2019.
+[10] GITHUB.IO, handling html forms with python mechanize and BeautifulSoup,
+     http://stockrt.github.io/p/handling-html-forms-with-python-mechanize-and-BeautifulSoup/,
+     site consulté le 1er mars 2019.
+[11] GITHUB.IO, Emulating a Browser in Python with mechanize,
+     http://stockrt.github.io/p/emulating-a-browser-in-python-with-mechanize/,
+     site consulté le 1er mars 2019.
+[12] PYTHONFORBEGINNERS.COM, Browsing in Python with Mechanize,
+     https://www.pythonforbeginners.com/mechanize/browsing-in-python-with-mechanize/,
+     site consulté le 1er mars 2019.
+[13] PYTHONFORBEGINNERS.COM, Python Mechanize Cheat Sheet,
+     https://www.pythonforbeginners.com/cheatsheet/python-mechanize-cheat-sheet,
+     site consulté le 1er mars 2019.
